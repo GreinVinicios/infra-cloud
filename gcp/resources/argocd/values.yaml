@@ -1,0 +1,17 @@
+server:
+  extraArgs:
+    - --insecure
+  ingress:
+    ingressClassName: "external-nginx"
+    annotations:
+      #kubernetes.io/ingress.class: "external-nginx"
+      ingress.kubernetes.io/ssl-redirect: "false"
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    enabled: true
+    hosts:
+    - <you_domainname_here>
+    tls:
+      - hosts:
+          - <you_domainname_here>
+        secretName: argocd-tls

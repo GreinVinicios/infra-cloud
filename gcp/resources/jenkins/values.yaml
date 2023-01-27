@@ -1,0 +1,16 @@
+controller:
+  ingress:
+    enabled: true
+    ingressClassName: external-nginx
+    hostName: <your_custom_domain>
+    tls:
+    - secretName: jenkins-certificate
+      hosts:
+        - <your_custom_domain>
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "256Mi"
+    limits:
+      cpu: "1000m"
+      memory: "2048Mi"
